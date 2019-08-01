@@ -1,3 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
 
+body {
+  font-family: "Red Hat Display", sans-serif;
+}
+body .header {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  width: 100%;
+  height: 100px;
+  padding-left: 100px;
+  margin: 0 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+body .header .material-icons {
+  margin-left: 20px;
+  line-height: 100px;
+  color: #ccc;
+}
+body .header input {
+  width: 100%;
+  height: 20px;
+  margin: 40px 0px 40px 10px;
+}
+body .header input:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+body div {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+body div .info nav {
+  display: block;
+  width: 100px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+body div .info nav .logo {
+  background-color: #000;
+  display: block;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  text-decoration: none;
+  color: #fff;
+}
+body div .info nav .navegation li {
+  background-color: #fff;
+  display: block;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  color: #ccc;
+  border-bottom: solid 1px #ccc;
+}
+body .home {
+  width: 100%;
+  padding: 100px 0 0 100px;
+}
+body .home .banner-home {
+  width: 100%;
+  height: 400px;
+  background-image: url(../batman.jpg);
+  background-size: cover;
+}
+body .home .banner-home p {
+  line-height: 400px;
+  text-align: center;
+  color: #000;
+  font-size: 30px;
+}
+body .home .container {
+  display: flex;
+  flex-direction: column;
+}
+body .home .container .title-section {
+  display: block;
+  width: 100%;
+}
 
 /*# sourceMappingURL=styles.css.map */
