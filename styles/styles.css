@@ -9,6 +9,7 @@
 
 body {
   font-family: "Red Hat Display", sans-serif;
+  color: rgba(8, 28, 36, 0.5);
 }
 body .header {
   display: flex;
@@ -62,22 +63,36 @@ body div .info nav .logo {
   text-decoration: none;
   color: #fff;
 }
-body div .info nav .navegation li {
+body div .info nav .logo .material-icons {
+  transition: all 0.3s ease-in;
+}
+body div .info nav .logo:hover .material-icons {
+  transform: scale(1.1);
+  transition: all 0.3s ease-out;
+}
+body div .info nav .navigation li {
   background-color: #fff;
   display: block;
   width: 100px;
   height: 100px;
   text-align: center;
   line-height: 100px;
-  color: #ccc;
   border-bottom: solid 1px #ccc;
 }
+body div .info nav .navigation li a {
+  text-decoration: none;
+  color: rgba(8, 28, 36, 0.7);
+  transition: all 0.3s ease-in;
+}
+body div .info nav .navigation li:hover a {
+  color: #081c24;
+  transition: all 0.3s ease-out;
+}
 body .home {
-  width: 100%;
+  width: calc(100% - 100px);
   padding: 100px 0 0 100px;
 }
 body .home .banner-home {
-  width: 100%;
   height: 400px;
   background-image: url(../batman.jpg);
   background-size: cover;
@@ -91,10 +106,57 @@ body .home .banner-home p {
 body .home .container {
   display: flex;
   flex-direction: column;
+  width: 90%;
+  margin: 10px auto;
 }
 body .home .container .title-section {
   display: block;
-  width: 100%;
+  margin: 15px 15px;
+}
+body .home .container .title-section .title-category {
+  float: left;
+  color: #081c24;
+}
+body .home .container .title-section .view-all {
+  float: right;
+  text-decoration: none;
+  color: rgba(8, 28, 36, 0.7);
+  transition: all 0.3s ease-in;
+}
+body .home .container .title-section .view-all:hover {
+  color: #081c24;
+  transition: all 0.3s ease-out;
+}
+body .home .container .movies-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: none;
+  list-style: none;
+}
+body .home .container .movies-list .movie {
+  width: 15%;
+  margin: 10px 15px;
+}
+body .home .container .movies-list .movie a {
+  text-decoration: none;
+}
+body .home .container .movies-list .movie a .movie-img {
+  width: 85%;
+  transition: all 0.3s ease-in;
+}
+body .home .container .movies-list .movie a .movie-title {
+  margin: 15px 0;
+  color: rgba(8, 28, 36, 0.5);
+  transition: all 0.3s ease-in;
+}
+body .home .container .movies-list .movie:hover .movie-img {
+  transform: scale(1.05);
+  transition: all 0.3s ease-out;
+}
+body .home .container .movies-list .movie:hover .movie-title {
+  color: #081c24;
+  transition: all 0.3s ease-out;
 }
 
 /*# sourceMappingURL=styles.css.map */

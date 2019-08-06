@@ -9,6 +9,7 @@
 
 body{
     font-family: 'Red Hat Display', sans-serif;
+    color:rgba(8,28,36,.5);
     .header{
         display:flex;
         flex-direction: row;
@@ -58,9 +59,18 @@ body{
                     text-align: center;
                     line-height: 100px;
                     text-decoration: none;
-                    color: #fff;                    
+                    color: #fff;  
+                    .material-icons{
+                        transition: all .3s ease-in;
+                    }
+                    &:hover{
+                        .material-icons{
+                            transform: scale(1.1);
+                            transition: all .3s ease-out;
+                        }
+                    }                  
                 }
-                .navegation{
+                .navigation{
                     li{
                         background-color:#fff;
                         display:block;
@@ -68,18 +78,28 @@ body{
                         height: 100px;
                         text-align: center;
                         line-height: 100px;
-                        color: #ccc;
                         border-bottom: solid 1px #ccc;
+                        a{
+                            text-decoration: none;
+                            color: rgba(8,28,36,.7);
+                            transition: all .3s ease-in;
+                        }
+                        &:hover{
+                            a{
+                                color:#081c24;
+                                transition: all .3s ease-out;
+                            }
+                            
+                        }
                     }
                 }
             }
         }
     }
     .home{
-        width:100%;
+        width: calc(100% - 100px);
         padding:100px 0 0 100px;
         .banner-home{
-            width: 100%;
             height: 400px;
             background-image: url(../batman.jpg);
             background-size: cover;
@@ -94,13 +114,61 @@ body{
         .container{
             display:flex;
             flex-direction: column;
+            width:90%;
+            margin: 10px auto;
             .title-section{
                 display:block;
-                width: 100%;
+                margin: 15px 15px;
+                .title-category{
+                    float: left;
+                    color: #081c24;
+                }
+                .view-all{
+                    float:right;
+                    text-decoration: none;
+                    color: rgba(8,28,36,.7);
+                    transition: all .3s ease-in;
+                    &:hover{
+                        color:#081c24;
+                        transition: all .3s ease-out;
+                    }
+                }
+            }
+            .movies-list{
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                text-decoration: none;
+                list-style: none;
+                .movie{
+                    width: 15%;
+                    margin: 10px 15px;
+                    a{
+                        text-decoration: none;
+                        .movie-img{
+                            width: 85%;
+                            transition: all .3s ease-in;
+                        }
+                        .movie-title{
+                            margin: 15px 0;
+                            color:rgba(8,28,36,.5);
+                            transition: all .3s ease-in;
+                        }
+                    }
+                    &:hover{
+                        .movie-img{
+                            transform: scale(1.05);
+                            transition: all .3s ease-out;
+                        }
+                        .movie-title{
+                            color:#081c24;
+                            transition: all .3s ease-out;
+                        }
+                    }
+                }
             }
         }
     }
 }
-
 
 
