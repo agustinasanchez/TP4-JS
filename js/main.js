@@ -1,35 +1,30 @@
-let data = [
-    {
-        title: 'The Lion King', 
-        overview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porta laoreet quam pulvinar pharetra. Nullam vitae ante sodales, euismod mauris ut, dignissim eros.',
-        genres: [28, 6, 2],
-        release_date:'2019-03-06',
-        backdrop_path:'',
-        poster_path:'',
-        id:299535,
-        tagline:'The King has Returned.'
-    }, 
-    {
-        title: 'Avengers: Endgame',
-        overview: 'Quisque ac erat et felis ullamcorper blandit. Maecenas sagittis id est sed sagittis. Nam eget pharetra leo. Aenean at justo sed nulla tincidunt vehicula ut sagittis justo',
-        genres: [28, 6, 2],
-        release_date:'2019-03-06',
-        backdrop_path:'',
-        poster_path:'',
-        id:299536,
-        tagline:'Part of the journey is the end.'
-    }, 
-    {
-        title: 'Alita',
-        overview: 'Etiam pellentesque felis et aliquam rhoncus. Aenean porttitor urna nisi, a semper ipsum hendrerit vel. Praesent elementum diam erat, et ornare neque dignissim ac.',
-        genres: [28, 6, 2],
-        release_date:'2019-03-06',
-        backdrop_path:'',
-        poster_path:'',
+let data = {
+  page:1,
+  total_results:19783,
+  total_pages:990,
+  results:[
+      {
+        vote_count:4394,
         id:299537,
-        tagline:'An angel falls. A warrior rises.'
-    }
-]
+        video:false,
+        vote_average:7.1,
+        title:"Captain Marvel",
+        popularity:433.107,
+        poster_path:"\/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
+        original_language:"en",
+        original_title:"Captain Marvel",
+        genre_ids:[
+            28,
+            12,
+            878
+        ],
+        backdrop_path:"\/w2PMyoyLU22YvrGK3smVM9fW1jj.jpg",
+        adult:false,
+        overview:"The story follows Carol Danvers as she becomes one of the universe’s most powerful heroes when Earth is caught in the middle of a galactic war between two alien races. Set in the 1990s, Captain Marvel is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe.",
+        release_date:"2019-03-06"
+      }
+  ]
+}
 
 let data_movies = {
     adult:false,
