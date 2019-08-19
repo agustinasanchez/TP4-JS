@@ -10,6 +10,7 @@
 body {
   font-family: "Red Hat Display", sans-serif;
   color: rgba(8, 28, 36, 0.5);
+  position: relative;
 }
 body .header {
   display: flex;
@@ -22,6 +23,7 @@ body .header {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 body .header .material-icons {
   margin-left: 20px;
@@ -40,20 +42,21 @@ body .header input:focus {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
 }
-body div {
+body .ppal {
   display: flex;
   flex-direction: row;
   height: 100%;
 }
-body div .info nav {
+body .ppal .info nav {
   display: block;
   width: 100px;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
 }
-body div .info nav .logo {
+body .ppal .info nav .logo {
   background-color: #000;
   display: block;
   width: 100px;
@@ -63,14 +66,14 @@ body div .info nav .logo {
   text-decoration: none;
   color: #fff;
 }
-body div .info nav .logo .material-icons {
+body .ppal .info nav .logo .material-icons {
   transition: all 0.3s ease-in;
 }
-body div .info nav .logo:hover .material-icons {
+body .ppal .info nav .logo:hover .material-icons {
   transform: scale(1.1);
   transition: all 0.3s ease-out;
 }
-body div .info nav .navigation li {
+body .ppal .info nav .navigation li {
   background-color: #fff;
   display: block;
   width: 100px;
@@ -79,84 +82,172 @@ body div .info nav .navigation li {
   line-height: 100px;
   border-bottom: solid 1px #ccc;
 }
-body div .info nav .navigation li a {
+body .ppal .info nav .navigation li a {
   text-decoration: none;
   color: rgba(8, 28, 36, 0.7);
   transition: all 0.3s ease-in;
 }
-body div .info nav .navigation li:hover a {
+body .ppal .info nav .navigation li:hover a {
   color: #081c24;
   transition: all 0.3s ease-out;
 }
-body .home {
+body .ppal .home {
   width: calc(100% - 100px);
   padding: 100px 0 0 100px;
 }
-body .home .banner-home {
+body .ppal .home .banner-home {
   height: 400px;
   background-image: url(../batman.jpg);
   background-size: cover;
 }
-body .home .banner-home p {
+body .ppal .home .banner-home p {
   line-height: 400px;
   text-align: center;
   color: #000;
   font-size: 30px;
 }
-body .home .container {
+body .ppal .home .container {
   display: flex;
   flex-direction: column;
   width: 90%;
   margin: 10px auto;
 }
-body .home .container .title-section {
+body .ppal .home .container .title-section {
   display: block;
   margin: 15px 15px;
 }
-body .home .container .title-section .title-category {
+body .ppal .home .container .title-section .title-category {
   float: left;
   color: #081c24;
 }
-body .home .container .title-section .view-all {
+body .ppal .home .container .title-section .view-all {
   float: right;
   text-decoration: none;
   color: rgba(8, 28, 36, 0.7);
   transition: all 0.3s ease-in;
 }
-body .home .container .title-section .view-all:hover {
+body .ppal .home .container .title-section .view-all:hover {
   color: #081c24;
   transition: all 0.3s ease-out;
 }
-body .home .container .movies-list {
+body .ppal .home .container .movies-list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   text-decoration: none;
   list-style: none;
 }
-body .home .container .movies-list .movie {
+body .ppal .home .container .movies-list .movie {
   width: 15%;
   margin: 10px 15px;
 }
-body .home .container .movies-list .movie a {
+body .ppal .home .container .movies-list .movie a {
   text-decoration: none;
 }
-body .home .container .movies-list .movie a .movie-img {
-  width: 85%;
+body .ppal .home .container .movies-list .movie a .movie-img {
+  width: 90%;
   transition: all 0.3s ease-in;
 }
-body .home .container .movies-list .movie a .movie-title {
+body .ppal .home .container .movies-list .movie a .movie-img .img {
+  width: 100%;
+  height: 100%;
+}
+body .ppal .home .container .movies-list .movie a .movie-title {
   margin: 15px 0;
   color: rgba(8, 28, 36, 0.5);
   transition: all 0.3s ease-in;
 }
-body .home .container .movies-list .movie:hover .movie-img {
+body .ppal .home .container .movies-list .movie:hover .movie-img {
   transform: scale(1.05);
   transition: all 0.3s ease-out;
 }
-body .home .container .movies-list .movie:hover .movie-title {
+body .ppal .home .container .movies-list .movie:hover .movie-title {
   color: #081c24;
   transition: all 0.3s ease-out;
+}
+body .close-modal {
+  display: none;
+}
+body .modal-container {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(8, 28, 36, 0.2);
+}
+body .modal-container .modal {
+  width: 100vh;
+  height: 85vh;
+  background-color: #ccc;
+  margin: 30px auto;
+  position: relative;
+}
+body .modal-container .modal .first-div {
+  width: 100%;
+  height: 50%;
+}
+body .modal-container .modal .first-div .header-img {
+  width: 100%;
+  opacity: 0.2;
+}
+body .modal-container .modal .first-div .movie-header {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  margin: 10px 15px;
+}
+body .modal-container .modal .first-div .movie-header a {
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+body .modal-container .modal .first-div .movie-header div {
+  width: 50%;
+  float: right;
+  margin: 90px 0;
+}
+body .modal-container .modal .first-div .movie-header div .movie-title {
+  color: #773333;
+  margin: 5px 0;
+  font-size: 20px;
+}
+body .modal-container .modal .movie-info {
+  width: 100%;
+  height: 50%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+body .modal-container .modal .movie-info .movie-image {
+  background-image: url(../lion-king.jpg);
+  width: 203px;
+  height: 304px;
+  z-index: 1;
+  position: absolute;
+  top: -60%;
+  left: 45px;
+  background-size: cover;
+}
+body .modal-container .modal .movie-info .movie-description {
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 15px;
+}
+body .modal-container .modal .movie-info .movie-description h4 {
+  color: #773333;
+}
+body .modal-container .modal .movie-info .movie-description p {
+  margin: 10px 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

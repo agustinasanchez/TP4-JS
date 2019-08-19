@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Red+Hat+Display&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/main.js" type="text/javascript"></script>
     <title>TMDb</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
             <i class="material-icons">search</i>
             <input type="text" name="fname" placeholder="Search for a movie..."/>
     </header>
-    <div>
+    <div class="ppal">
         <section class="info">
             <nav>
                 <a class="logo" href="#"><i class="material-icons">local_movies</i></a>
@@ -37,29 +37,53 @@
                     <a href="#" class="view-all">View All</a>
                 </header>
                 <ul class="movies-list">
-                    <li class="movie"><a href="#">
-                        <div class="movie-img"><img src="lion-king.jpg"></div>
+                    <li class="movie"><a href="#" onclick="openModal()">
+                        <div class="movie-img"><img class="img" src="lion-king.jpg"></div>
                         <h3 class="movie-title">The Lion King</h3>
                     </a></li>
-                    <li class="movie"><a href="#">
-                        <div class="movie-img"><img src="avengers.jpg"></div>
+                    <li class="movie"><a href="#" onclick="openModal()">
+                        <div class="movie-img"><img class="img" src="avengers.jpg"></div>
                         <h3 class="movie-title">Avengers: Endgame</h3>
                     </a></li>
-                    <li class="movie"><a href="#">
-                        <div class="movie-img"><img src="alita.jpg"></div>
+                    <li class="movie"><a href="#" onclick="openModal()">
+                        <div class="movie-img"><img class="img" src="alita.jpg"></div>
                         <h3 class="movie-title">Alita</h3>
                     </a></li>
-                    <li class="movie"><a href="#">
-                        <div class="movie-img"><img src="lion-king.jpg"></div>
+                    <li class="movie"><a href="#" onclick="openModal()">
+                        <div class="movie-img"><img class="img" src="lion-king.jpg"></div>
                         <h3 class="movie-title">The Lion King</h3>
                     </a></li>
-                    <li class="movie"><a href="#">
-                        <div class="movie-img"><img src="avengers.jpg"></div>
+                    <li class="movie"><a href="#" onclick="openModal()">
+                        <div class="movie-img"><img class="img" src="avengers.jpg"></div>
                         <h3 class="movie-title">Avengers: Endgame</h3>
                     </a></li>
                 </ul>
             </div>
         </section>
+    </div>
+    <div class="close-modal" id="modal">
+        <div class="modal">
+            <div class="first-div">
+                <img class="header-img" src="lion-king-2.jpg">
+                <div class="movie-header">
+                    <a href="#" onclick="closeModal()">x</a>
+                    <div>
+                        <h2 class="movie-title">Parasite</h2>
+                        <p>Misplaced Familyhood</p>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-info">
+                <div class="movie-image"></div>
+                <div class="movie-description">
+                    <p>All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.</p>
+                    <h4 class="genres">GENRES</h4>
+                    <p> Drama, Thriller, Comedy</p>
+                    <h4 class="release-date">RELEASE DATE</h4>
+                    <p>30 May 2019</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
