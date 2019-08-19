@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let data = {
   page:1,
   total_results:19783,
@@ -88,3 +89,17 @@ let data_movies = {
     vote_average:8.7,
     vote_count:2912
   }
+=======
+const openModal = () => {
+    let container = document.getElementById('modal')
+    container.classList.remove('close-modal')
+    container.classList.add('modal-container')
+}
+
+const closeModal = () => {
+    let container = document.getElementById('modal')
+    container.classList.remove('modal-container')
+    container.classList.add('close-modal')
+}
+
+>>>>>>> e7a82d3a8fe4c26d490971f76a9c0136e67c04bb

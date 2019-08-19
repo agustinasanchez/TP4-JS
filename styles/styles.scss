@@ -9,6 +9,8 @@
 
 body{
     font-family: 'Red Hat Display', sans-serif;
+    color:rgba(8,28,36,.5);
+    position: relative;
     .header{
         display:flex;
         flex-direction: row;
@@ -20,6 +22,7 @@ body{
         position: fixed;
         top:0;
         left: 0;
+        z-index:1;
         .material-icons{
             margin-left:20px;
             line-height: 100px;
@@ -38,7 +41,7 @@ body{
             }    
         }
     }
-    div{
+    .ppal{
         display:flex;
         flex-direction: row;
         height: 100%;
@@ -50,6 +53,7 @@ body{
                 position: fixed;
                 top:0;
                 left: 0;
+                z-index:1;
                 .logo{
                     background-color:#000;
                     display:block;
@@ -58,9 +62,18 @@ body{
                     text-align: center;
                     line-height: 100px;
                     text-decoration: none;
-                    color: #fff;                    
+                    color: #fff;  
+                    .material-icons{
+                        transition: all .3s ease-in;
+                    }
+                    &:hover{
+                        .material-icons{
+                            transform: scale(1.1);
+                            transition: all .3s ease-out;
+                        }
+                    }                  
                 }
-                .navegation{
+                .navigation{
                     li{
                         background-color:#fff;
                         display:block;
@@ -68,39 +81,186 @@ body{
                         height: 100px;
                         text-align: center;
                         line-height: 100px;
-                        color: #ccc;
                         border-bottom: solid 1px #ccc;
+                        a{
+                            text-decoration: none;
+                            color: rgba(8,28,36,.7);
+                            transition: all .3s ease-in;
+                        }
+                        &:hover{
+                            a{
+                                color:#081c24;
+                                transition: all .3s ease-out;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+        .home{
+            width: calc(100% - 100px);
+            padding:100px 0 0 100px;
+            .banner-home{
+                height: 400px;
+                background-image: url(../batman.jpg);
+                background-size: cover;
+                // opacity:0.5;
+                p{
+                    line-height: 400px;
+                    text-align: center;
+                    color:#000;
+                    font-size: 30px;
+                }
+            }
+            .container{
+                display:flex;
+                flex-direction: column;
+                width:90%;
+                margin: 10px auto;
+                .title-section{
+                    display:block;
+                    margin: 15px 15px;
+                    .title-category{
+                        float: left;
+                        color: #081c24;
+                    }
+                    .view-all{
+                        float:right;
+                        text-decoration: none;
+                        color: rgba(8,28,36,.7);
+                        transition: all .3s ease-in;
+                        &:hover{
+                            color:#081c24;
+                            transition: all .3s ease-out;
+                        }
+                    }
+                }
+                .movies-list{
+                    display:flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    text-decoration: none;
+                    list-style: none;
+                    .movie{
+                        width: 15%;
+                        margin: 10px 15px;
+                        a{
+                            text-decoration: none;
+                            .movie-img{
+                                width: 90%;
+                                transition: all .3s ease-in;
+                                .img{
+                                    width:100%;
+                                    height: 100%;
+                                }
+                            }
+                            .movie-title{
+                                margin: 15px 0;
+                                color:rgba(8,28,36,.5);
+                                transition: all .3s ease-in;
+                            }
+                        }
+                        &:hover{
+                            .movie-img{
+                                transform: scale(1.05);
+                                transition: all .3s ease-out;
+                            }
+                            .movie-title{
+                                color:#081c24;
+                                transition: all .3s ease-out;
+                            }
+                        }
                     }
                 }
             }
         }
     }
-    .home{
-        width:100%;
-        padding:100px 0 0 100px;
-        .banner-home{
-            width: 100%;
-            height: 400px;
-            background-image: url(../batman.jpg);
-            background-size: cover;
-            // opacity:0.5;
-            p{
-                line-height: 400px;
-                text-align: center;
-                color:#000;
-                font-size: 30px;
-            }
-        }
-        .container{
-            display:flex;
-            flex-direction: column;
-            .title-section{
-                display:block;
+    .close-modal{
+        display:none;
+    }
+    .modal-container{
+        display:block;
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        z-index:1;
+        background-color: rgba(8,28,36,.2);
+        .modal{
+            width: 100vh;
+            height: 85vh;
+            background-color: #ccc;
+            margin: 30px auto;
+            position: relative;
+            .first-div{
                 width: 100%;
+                height: 50%;
+                .header-img{
+                    width: 100%;
+                    opacity: 0.2;
+                }
+                .movie-header{
+                    position:absolute;
+                    z-index:1;
+                    top:0;
+                    right: 0;
+                    width: 100%;
+                    height: 50%;
+                    margin: 10px 15px;
+                    a{
+                        display:block;
+                        width: 100%;
+                        text-align: right;
+                    }
+                    div{
+                        width: 50%;
+                        float: right;
+                        margin: 90px 0;
+                        .movie-title{
+                            color: rgb(119, 51, 51);
+                            margin: 5px 0;
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            .movie-info{
+                width: 100%;
+                height: 50%;
+                background-color: #fff;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                .movie-image{
+                    background-image:url(../lion-king.jpg);
+                    width: 203px;
+                    height: 304px;
+                    z-index:1;
+                    position:absolute;
+                    top:-60%;
+                    left:45px;
+                    background-size: cover;
+                }
+                .movie-description{
+                    height: 100%;
+                    width: 50%;
+                    position: absolute;
+                    bottom:0;
+                    right: 0;
+                    margin: 0 15px;
+                    h4{
+                        color: rgb(119, 51, 51);
+                    }
+                    p{
+                        margin: 10px 0;
+                    }
+                }
             }
         }
     }
+    
 }
-
 
 
