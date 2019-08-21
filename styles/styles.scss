@@ -189,14 +189,16 @@ body{
         z-index:1;
         background-color: rgba(8,28,36,.2);
         .modal{
+            display:block;
             width: 100vh;
-            height: 85vh;
+            height: 100vh;
             background-color: #ccc;
             margin: 30px auto;
             position: relative;
+            overflow: hidden;
             .first-div{
                 width: 100%;
-                height: 50%;
+                height: 40%;
                 .header-img{
                     width: 100%;
                     opacity: 0.2;
@@ -228,13 +230,13 @@ body{
             }
             .movie-info{
                 width: 100%;
-                height: 50%;
+                height: 60%;
                 background-color: #fff;
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 .movie-image{
-                    background-image:url(../lion-king.jpg);
+                    // background-image:url(../lion-king.jpg);
                     width: 203px;
                     height: 304px;
                     z-index:1;
