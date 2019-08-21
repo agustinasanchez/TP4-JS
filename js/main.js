@@ -125,8 +125,10 @@ const initialize = () => {
 /*
 *Los onclicks en las categorias del nav
 *Los nombres de las paginas donde muestran todo
+*Los resultados totales
+*El boton de loadmore
 *Los estilos en la pagina de cada categoria
-*Las imagenes
+*Las imagenes no aparecen
 *Modal para cada peli
 *Buscador para peliculas
 */
