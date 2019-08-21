@@ -10,7 +10,7 @@
     <script src="js/main.js" type="text/javascript"></script>
     <title>TMDb</title>
 </head>
-<body>
+<body onload="initialize()">
     <header class="header">
             <i class="material-icons">search</i>
             <input type="text" name="fname" placeholder="Search for a movie..."/>
@@ -20,7 +20,7 @@
             <nav>
                 <a class="logo" href="#"><i class="material-icons">local_movies</i></a>
                 <ul class="navigation">
-                    <li><a href="#" onclick="popularPage()">Popular</a></li>
+                    <li><a href="#" onclick="fetchPage()">Popular</a></li>
                     <li><a href="#" onclick="topRatedPage()">Top Rated</a></li>
                     <li><a href="#" onclick="upcomingPage()">Upcoming</a></li>
                     <li><a href="#" onclick="nowPlayingPage()">Now Playing</a></li>

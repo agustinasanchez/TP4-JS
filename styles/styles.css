@@ -179,15 +179,17 @@ body .modal-container {
   background-color: rgba(8, 28, 36, 0.2);
 }
 body .modal-container .modal {
+  display: block;
   width: 100vh;
-  height: 85vh;
+  height: 100vh;
   background-color: #ccc;
   margin: 30px auto;
   position: relative;
+  overflow: hidden;
 }
 body .modal-container .modal .first-div {
   width: 100%;
-  height: 50%;
+  height: 40%;
 }
 body .modal-container .modal .first-div .header-img {
   width: 100%;
@@ -219,14 +221,13 @@ body .modal-container .modal .first-div .movie-header div .movie-title {
 }
 body .modal-container .modal .movie-info {
   width: 100%;
-  height: 50%;
+  height: 60%;
   background-color: #fff;
   position: absolute;
   bottom: 0;
   left: 0;
 }
 body .modal-container .modal .movie-info .movie-image {
-  background-image: url(../lion-king.jpg);
   width: 203px;
   height: 304px;
   z-index: 1;

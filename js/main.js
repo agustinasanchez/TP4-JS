@@ -29,18 +29,13 @@ const createElem = (elem, className) => {
 const fetchFunction = (category, idCategory) => fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
     .then(response => response.json())
     .then(res => {
-      createList(res.results[0], idCategory)
-      createList(res.results[1], idCategory)
-      createList(res.results[2], idCategory)
-      createList(res.results[3], idCategory)
+      printList(res.results[0], idCategory)
+      printList(res.results[1], idCategory)
+      printList(res.results[2], idCategory)
+      printList(res.results[3], idCategory)
   })
 
-fetchFunction(categories[0],idCategories[0])
-fetchFunction(categories[1],idCategories[1])
-fetchFunction(categories[2],idCategories[2])
-fetchFunction(categories[3],idCategories[3])
-
-const createList = ({title, id, poster_path}, idContainer) => {
+const printList = ({title, id, poster_path}, idContainer) => {
   let container = document.getElementById(idContainer)
 
   let li = createElem('li', 'movie')
@@ -81,13 +76,13 @@ const fetchMovie = (peliculaId, apiKey) => fetch(`https://api.themoviedb.org/3/m
   .then(response => response.json())
   .then(res => fillModal(res))
 
-fetchMovie('420818', apiKey)
-
 const popularPage = ({results}) => {
-  let home = document.getElementsById('home')
-  home. innerHTML = ' '
-  createList(results[0], 'home')
+  let home = document.getElementById('home')
+  home.innerHTML = ' '
+  printList(results, 'home')
 }
+
+//results es un array mepa y hay que pasar un objeto como parametro de printList. entonces hay que ver que onda eso
 
 const fetchPage = (apiKey, page) => {
   fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page}`)
@@ -95,5 +90,11 @@ const fetchPage = (apiKey, page) => {
     .then(res => popularPage(res))
 }
 
-fetchPage(apiKey, 1)
+const initialize = () => {
+  fetchFunction(categories[0],idCategories[0])
+  fetchFunction(categories[1],idCategories[1])
+  fetchFunction(categories[2],idCategories[2])
+  fetchFunction(categories[3],idCategories[3])
+  fetchMovie('420818', apiKey)
+}
 
