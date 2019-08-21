@@ -10,7 +10,7 @@
     <script src="js/main.js" type="text/javascript"></script>
     <title>TMDb</title>
 </head>
-<body>
+<body onload="initialize()">
     <header class="header">
             <i class="material-icons">search</i>
             <input type="text" name="fname" placeholder="Search for a movie..."/>
@@ -20,67 +20,67 @@
             <nav>
                 <a class="logo" href="#"><i class="material-icons">local_movies</i></a>
                 <ul class="navigation">
-                    <li><a href="#">Popular</a></li>
-                    <li><a href="#">Top Rated</a></li>
-                    <li><a href="#">Upcoming</a></li>
-                    <li><a href="#">Now Playing</a></li>
+                    <li><a href="#" onclick="allMovies()">Popular</a></li>
+                    <li><a href="#" onclick="allMovies()">Top Rated</a></li>
+                    <li><a href="#" onclick="allMovies()">Upcoming</a></li>
+                    <li><a href="#" onclick="allMovies()">Now Playing</a></li>
                 </ul>
             </nav>
         </section>
-        <section class="home">
+        <section class="home" id="home">
             <header class="banner-home">
                 <p>THE MOVIE DB APP</p>
             </header>
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Popular Movies</h2>
-                    <a href="#" class="view-all">View All</a>
+                    <a href="#" class="view-all" onclick="allPopular()">View All</a>
                 </header>
-                <ul class="movies-list">
-                    <li class="movie"><a href="#" onclick="openModal()">
-                        <div class="movie-img"><img class="img" src="lion-king.jpg"></div>
-                        <h3 class="movie-title">The Lion King</h3>
-                    </a></li>
-                    <li class="movie"><a href="#" onclick="openModal()">
-                        <div class="movie-img"><img class="img" src="avengers.jpg"></div>
-                        <h3 class="movie-title">Avengers: Endgame</h3>
-                    </a></li>
-                    <li class="movie"><a href="#" onclick="openModal()">
-                        <div class="movie-img"><img class="img" src="alita.jpg"></div>
-                        <h3 class="movie-title">Alita</h3>
-                    </a></li>
-                    <li class="movie"><a href="#" onclick="openModal()">
-                        <div class="movie-img"><img class="img" src="lion-king.jpg"></div>
-                        <h3 class="movie-title">The Lion King</h3>
-                    </a></li>
-                    <li class="movie"><a href="#" onclick="openModal()">
-                        <div class="movie-img"><img class="img" src="avengers.jpg"></div>
-                        <h3 class="movie-title">Avengers: Endgame</h3>
-                    </a></li>
-                </ul>
+                <ul class="movies-list" id="popular"></ul>
+            </div>
+            <div class="container">
+                <header class="title-section">
+                    <h2 class="title-category">Top Rates Movies</h2>
+                    <a href="#" class="view-all" onclick="allTopRated()">View All</a>
+                </header>
+                <ul class="movies-list" id="top_rated"></ul>
+            </div>
+            <div class="container">
+                <header class="title-section">
+                    <h2 class="title-category">Upcoming Movies</h2>
+                    <a href="#" class="view-all" onclick="allUpcoming()">View All</a>
+                </header>
+                <ul class="movies-list" id="upcoming"></ul>
+            </div>
+            <div class="container">
+                <header class="title-section">
+                    <h2 class="title-category">Now Playing Movies</h2>
+                    <a href="#" class="view-all" onclick="allNowPlaying()">View All</a>
+                </header>
+                <ul class="movies-list" id="now_playing"></ul>
             </div>
         </section>
     </div>
     <div class="close-modal" id="modal">
         <div class="modal">
             <div class="first-div">
-                <img class="header-img" src="lion-king-2.jpg">
+                <img class="header-img" id="header-img">
                 <div class="movie-header">
                     <a href="#" onclick="closeModal()">x</a>
                     <div>
-                        <h2 class="movie-title">Parasite</h2>
-                        <p>Misplaced Familyhood</p>
+                        <h2 class="movie-title" id="movie-title"></h2>
+                        <p id="sub-title"></p>
                     </div>
                 </div>
             </div>
             <div class="movie-info">
-                <div class="movie-image"></div>
+                <div class="movie-image"><img id="movie-image"></div>
                 <div class="movie-description">
-                    <p>All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.</p>
+                    <p id="overview"></p>
                     <h4 class="genres">GENRES</h4>
-                    <p> Drama, Thriller, Comedy</p>
+                    <p id="genres"></p>
                     <h4 class="release-date">RELEASE DATE</h4>
-                    <p>30 May 2019</p>
+                    <p id="release-date"></p>
                 </div>
             </div>
         </div>
