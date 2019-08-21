@@ -17,8 +17,6 @@ const closeModal = () => {
 
 let apiKey = `de8e683780427ec48ccb17461ebf36c3`
 let categories = ['popular', 'top_rated', 'upcoming', 'now_playing']
-let idCategories = ['popular', 'top-rated', 'upcoming', 'now-playing']
-
 
 const createElem = (elem, className) => {
   let name = document.createElement(elem)
@@ -26,16 +24,15 @@ const createElem = (elem, className) => {
   return name
 }
 
-const fetchFunction = (category, idCategory) => fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
+const printList = (category) => fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
     .then(response => response.json())
     .then(res => {
-      printList(res.results[0], idCategory)
-      printList(res.results[1], idCategory)
-      printList(res.results[2], idCategory)
-      printList(res.results[3], idCategory)
+      for(i=0; i<5;i++){
+        createList(res.results[i], category)
+      }
   })
 
-const printList = ({title, id, poster_path}, idContainer) => {
+const createList = ({title, id, poster_path}, idContainer) => {
   let container = document.getElementById(idContainer)
 
   let li = createElem('li', 'movie')
@@ -72,29 +69,64 @@ const fillElem = (idElem, content) => {
   elem.innerText = content
 }
 
-const fetchMovie = (peliculaId, apiKey) => fetch(`https://api.themoviedb.org/3/movie/${peliculaId}?api_key=${apiKey}`)
+const fetchMovie = (peliculaId) => fetch(`https://api.themoviedb.org/3/movie/${peliculaId}?api_key=${apiKey}`)
   .then(response => response.json())
   .then(res => fillModal(res))
 
-const popularPage = ({results}) => {
+const createAllElemPage = (title) => {
   let home = document.getElementById('home')
   home.innerHTML = ' '
-  printList(results, 'home')
+  let div = createElem('div', 'container') //la clase no tiene estilos
+  let ul = createElem('ul', 'movies-list')
+  ul.id = 'list-container'
+  let h2 = createElem('h2', 'title-category')
+  h2.innerText = title
+  let totalResults = createElem('p', 'total-results') //la clase no tiene estilos
+  totalResults.innerText = '56463' // no se como traer esta info
+  let loadMoreButton = createElem('a', 'load-more') //la clase no tiene estilos
+  loadMoreButton.innerText = 'Load More'
+  loadMoreButton.href = '#'
+  // loadMoreButton.onclick = addOnePageMore // aca es el onclick del boton de loadmore
+  home.appendChild(div)
+  div.appendChild(h2) 
+  div.appendChild(totalResults)
+  div.appendChild(loadMoreButton)
+  div.appendChild(ul)
 }
+//falta mejorar los estilos de la pagina y filtrar por categoria
 
-//results es un array mepa y hay que pasar un objeto como parametro de printList. entonces hay que ver que onda eso
+//aca no se como hacer para que cuando aprete el boton de loadmore le sume uno a la page
+// const addOnePageMore = () => {
+//   let newPage = page + 1
+//   allMovies(newPage)
+// }
 
-const fetchPage = (apiKey, page) => {
-  fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page}`)
+let titlePage = 'Popular Movies'
+let page = 1
+let category = 'popular'
+
+const allMovies = () => {
+  fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}&page=${page}`)
     .then(response => response.json())
-    .then(res => popularPage(res))
+    .then(res => {
+      createAllElemPage(titlePage)
+      res.results.forEach(e => {
+        createList(e, 'list-container')
+    })}
+    )
 }
 
 const initialize = () => {
-  fetchFunction(categories[0],idCategories[0])
-  fetchFunction(categories[1],idCategories[1])
-  fetchFunction(categories[2],idCategories[2])
-  fetchFunction(categories[3],idCategories[3])
-  fetchMovie('420818', apiKey)
+  categories.forEach(e => printList(e))
+  fetchMovie('420818')
 }
 
+
+/*
+*Los onclicks en las categorias del nav
+*Los nombres de las paginas donde muestran todo
+*Los estilos en la pagina de cada categoria
+*Las imagenes
+*Modal para cada peli
+*Buscador para peliculas
+*/
