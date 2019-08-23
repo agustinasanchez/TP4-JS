@@ -232,7 +232,7 @@ body .modal-container .modal .movie-info .movie-image {
   height: 300px;
   z-index: 1;
   position: absolute;
-  top: -40%;
+  top: -60%;
   left: 45px;
   background-size: cover;
 }
@@ -251,4 +251,4 @@ body .modal-container .modal .movie-info .movie-description p {
   margin: 10px 0;
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=css.map */
