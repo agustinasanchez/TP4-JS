@@ -12,9 +12,9 @@ const closeModal = () => {
     container.classList.add('close-modal')
 }
 
-const openMovieModal = () => {
+// const openMovieModal = () => {
 
-}
+// }
 
 // Api
 // POPULAR
@@ -66,11 +66,12 @@ const fillModal = ({title, tagline, poster_path, backdrop_path, overview, releas
     fillElem('release-date', release_date)
     document.getElementById('header-img').src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${backdrop_path}`
     document.getElementById('movie-image').src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${poster_path}`
-    // console.log(genres)
-    // genres.forEach( e => {
-    //     console.log(e.name)
-    //   fillElem('genres', `${e.name}`)
-    // })
+    console.log(genres)
+    genres.forEach( e => {
+        let genre = document.createElement('span')
+        genre.innerHTML = e.name
+        //completar esto
+    })
 }
 
 const fillElem = (idElem, content) => {
@@ -105,7 +106,7 @@ const createAllElemPage = (title) => {
     div.appendChild(loadMoreButton)
     div.appendChild(ul)
 }
-//falta mejorar los estilos de la pagina y filtrar por categoria
+//falta mejorar los estilos de la pagina
 
 
 let currentCategory 
@@ -167,9 +168,12 @@ var keyPress=function(event){
 
 /*
 *Los resultados totales
+*generos en el modal
 *Modal para cada peli
+*Busqueda en la pagina principal
 
-*boton para siguiente y anterior
+*boton para siguiente y anterior o que cuando apretes loadmore se carguen abajo
 *Los estilos en la pagina de cada categoria
 *responsive - sacar el nav y hacer el menu hamburguesa
+*si llegamos hacer el autocomplete en la busqueda
 */
