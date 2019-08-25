@@ -1,23 +1,10 @@
-// Modal
-
-const openModal = () => {
-    let container = document.getElementById('modal')
-    container.classList.remove('close-modal')
-    container.classList.add('modal-container')
-}
-
 const closeModal = () => {
+    // let modal = document.getElementsByClassName('modal')
+    // modal.innerHTML = ' '
     let container = document.getElementById('modal')
     container.classList.remove('modal-container')
     container.classList.add('close-modal')
 }
-
-// const openMovieModal = () => {
-
-// }
-
-// Api
-// POPULAR
 
 let apiKey = `de8e683780427ec48ccb17461ebf36c3`
 let categories = ['popular', 'top_rated', 'upcoming', 'now_playing']
@@ -45,9 +32,12 @@ const createList = ({title, id, poster_path}, idContainer) => {
     let div = createElem('div', 'movie-img')
     let img = createElem('img', 'img')
     let h3 = createElem('h3', 'movie-title')
-
-    li.id = id
-    a.addEventListener('click', openModal, true)
+    a.onclick = () => {
+        let container = document.getElementById('modal')
+        fetchMovie(id)
+        container.classList.remove('close-modal')
+        container.classList.add('modal-container')
+    }
     a.href = '#'
     img.src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${poster_path}`
     h3.innerText = title
@@ -66,11 +56,11 @@ const fillModal = ({title, tagline, poster_path, backdrop_path, overview, releas
     fillElem('release-date', release_date)
     document.getElementById('header-img').src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${backdrop_path}`
     document.getElementById('movie-image').src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${poster_path}`
-    console.log(genres)
     genres.forEach( e => {
-        let genre = document.createElement('span')
-        genre.innerHTML = e.name
-        //completar esto
+        let ul = document.getElementById('genres')
+        let genre = document.createElement('li')
+        genre.innerText = e.name
+        ul.appendChild(genre)
     })
 }
 
@@ -84,7 +74,7 @@ const fetchMovie = (peliculaId) => fetch(`https://api.themoviedb.org/3/movie/${p
     .then(res => fillModal(res))
     .catch(error => console.log(error))
 
-const createAllElemPage = (title, results) => {
+const createAllElemPage = (title, page, totalPages, results) => {
     let home = document.getElementById('home')
     home.innerHTML = ' '
     let div = createElem('div', 'container') //la clase no tiene estilos
@@ -93,16 +83,28 @@ const createAllElemPage = (title, results) => {
     let h2 = createElem('h2', 'title-category')
     h2.innerText = title
     h2.id = 'title'
-    let totalResults = createElem('p', 'total-results') //la clase no tiene estilos
-    totalResults.innerText = results // no se como traer esta info
-    let loadMoreButton = createElem('a', 'load-more') //la clase no tiene estilos
-    loadMoreButton.innerText = 'Load More'
-    loadMoreButton.href = '#'
-    loadMoreButton.onclick = addOnePageMore
+    let totalResults = createElem('p', 'results') //la clase no tiene estilos
+    totalResults.innerText = results
+    let numPage = createElem('p', 'results')
+    numPage.innerText = `Página ${page} de ${totalPages}`
+    let previousButton = createElem('a', 'button-page') //la clase no tiene estilos
+    previousButton.innerText = 'Previous'
+    previousButton.id = 'previous'
+    previousButton.onclick = previousPage
+    previousButton.href = '#'
+    page === 1 ? previousButton.style.display = 'none' : true
+    let nextButton = createElem('a', 'button-page') //la clase no tiene estilos
+    nextButton.innerText = 'Next'
+    nextButton.href = '#'
+    nextButton.id = 'next'
+    nextButton.onclick = nextPage   
+    page === totalPages ? nextButton.style.display = 'none' : true
     home.appendChild(div)
     div.appendChild(h2) 
     div.appendChild(totalResults)
-    div.appendChild(loadMoreButton)
+    div.appendChild(numPage)
+    div.appendChild(previousButton)
+    div.appendChild(nextButton)
     div.appendChild(ul)
 }
 //falta mejorar los estilos de la pagina
@@ -118,12 +120,8 @@ const allMovies = (titlePage, category, page) => {
     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}&page=${page}`)
         .then(response => response.json())
         .then(res => {
-<<<<<<< HEAD
-        createAllElemPage(titlePage, res.total_results)
-=======
-        createAllElemPage(titlePage)
+        createAllElemPage(titlePage, res.page, res.total_pages, res.total_results)
         currentCategory = category
->>>>>>> ec8b168d99cf2a99e92d86acc3b894a0f5de6499
         res.results.forEach(e => {
             createList(e, 'list-container')
         })}
@@ -131,18 +129,26 @@ const allMovies = (titlePage, category, page) => {
         .catch(error => console.log(error))
 }
 
-const addOnePageMore = () => {
+const nextPage = () => {
     page = page + 1
     let title = document.getElementById('title').innerText
-    allMovies(title, currentCategory, page) // pasar la categoria correcta como parametro
+    allMovies(title, currentCategory, page) 
+}
+const previousPage = () => {
+    if (page === 1){
+        console.log('oli')
+    }else {
+        page = page - 1
+        let title = document.getElementById('title').innerText
+        allMovies(title, currentCategory, page) 
+    }
 }
 
 const initialize = () => {
     categories.forEach(e => printList(e))
-    fetchMovie('299534')
 }
 
-const infoMovie = (content) => {
+const infoMovie = (content, page = 1) => {
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${content}&page=${page}`)
         .then(response => response.json())
         .then(res => {
@@ -170,13 +176,8 @@ var keyPress=function(event){
 }
 
 /*
-*Los resultados totales
-*generos en el modal
-*Modal para cada peli
-*Busqueda en la pagina principal
-
-*boton para siguiente y anterior o que cuando apretes loadmore se carguen abajo
 *Los estilos en la pagina de cada categoria
 *responsive - sacar el nav y hacer el menu hamburguesa
-*si llegamos hacer el autocomplete en la busqueda
+
+*si llegamos hacer el autocomplete en la busqueda (onkeyup)
 */

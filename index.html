@@ -13,7 +13,7 @@
 <body onload="initialize()">
     <header class="header">
             <i class="material-icons">search</i>
-            <input type="text" value = "" onkeyup="handleSearch()" onkeypress="keyPress(event)" name="fname" placeholder="Search for a movie..." id="search"/>
+            <input type="text" value = "" onkeypress="keyPress(event)" name="fname" placeholder="Search for a movie..." id="search"/>
     </header>
     <div class="ppal">
         <section class="info">
@@ -79,7 +79,7 @@
                 <div class="movie-description">
                     <p id="overview"></p>
                     <h4 class="genres">GENRES</h4>
-                    <p id="genres"></p>
+                    <ul id="genres"></ul>
                     <h4 class="release-date">RELEASE DATE</h4>
                     <p id="release-date"></p>
                 </div>
