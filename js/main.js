@@ -77,10 +77,9 @@ const fetchMovie = (peliculaId) => fetch(`https://api.themoviedb.org/3/movie/${p
     .then(res => fillModal(res))
     .catch(error => console.log(error))
 
-const createAllElemPage = (title) => {
+const createAllElemPage = (title, results) => {
     let home = document.getElementById('home')
     home.innerHTML = ' '
-
     let div = createElem('div', 'container') //la clase no tiene estilos
     let ul = createElem('ul', 'movies-list')
     ul.id = 'list-container'
@@ -88,7 +87,7 @@ const createAllElemPage = (title) => {
     h2.innerText = title
     h2.id = 'title'
     let totalResults = createElem('p', 'total-results') //la clase no tiene estilos
-    totalResults.innerText = '56463' // no se como traer esta info
+    totalResults.innerText = results // no se como traer esta info
     let loadMoreButton = createElem('a', 'load-more') //la clase no tiene estilos
     loadMoreButton.innerText = 'Load More'
     loadMoreButton.href = '#'
@@ -113,7 +112,7 @@ const allMovies = (titlePage, category) => {
     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}&page=${page}`)
         .then(response => response.json())
         .then(res => {
-        createAllElemPage(titlePage)
+        createAllElemPage(titlePage, res.total_results)
         res.results.forEach(e => {
             createList(e, 'list-container')
         })}
