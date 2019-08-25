@@ -103,10 +103,17 @@ body{
             padding:100px 0 0 100px;
             .banner-home{
                 height: 400px;
-                background-image: url(../batman.jpg);
-                background-size: cover;
-                // opacity:0.5;
+                position:relative;
+                overflow:hidden;
+                .img-home{
+                    width: 100%;
+                    opacity:0.5;
+                }
                 p{
+                    position:absolute;
+                    top:0;
+                    left:40%;
+                    z-index: 1;
                     line-height: 400px;
                     text-align: center;
                     color:#000;
