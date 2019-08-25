@@ -12,6 +12,10 @@ const closeModal = () => {
     container.classList.add('close-modal')
 }
 
+// const openMovieModal = () => {
+
+// }
+
 // Api
 // POPULAR
 
@@ -45,7 +49,7 @@ const createList = ({title, id, poster_path}, idContainer) => {
     li.id = id
     a.addEventListener('click', openModal, true)
     a.href = '#'
-    img.value = poster_path
+    img.src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${poster_path}`
     h3.innerText = title
 
     container.appendChild(li)
@@ -55,16 +59,19 @@ const createList = ({title, id, poster_path}, idContainer) => {
     a.appendChild(h3)
 }
 
-const fillModal = ({title, tagline, poster_path, backdrop_path, overview, release_date}) => {
+const fillModal = ({title, tagline, poster_path, backdrop_path, overview, release_date, genres}) => {
     fillElem('movie-title', title)
     fillElem('overview', overview)
     fillElem('sub-title', tagline)
-    fillElem('header-img', backdrop_path)
-    fillElem('movie-image', poster_path)
     fillElem('release-date', release_date)
-    // genres.forEach( e => {
-    //   fillElem('genres', `${e.name}, `)
-    // })
+    document.getElementById('header-img').src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${backdrop_path}`
+    document.getElementById('movie-image').src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${poster_path}`
+    console.log(genres)
+    genres.forEach( e => {
+        let genre = document.createElement('span')
+        genre.innerHTML = e.name
+        //completar esto
+    })
 }
 
 const fillElem = (idElem, content) => {
@@ -98,21 +105,25 @@ const createAllElemPage = (title, results) => {
     div.appendChild(loadMoreButton)
     div.appendChild(ul)
 }
-//falta mejorar los estilos de la pagina y filtrar por categoria
+//falta mejorar los estilos de la pagina
 
-let page = 1
 
-const addOnePageMore = () => {
-  page = page + 1
-  let title = document.getElementById('title').innerText
-  allMovies(title, 'popular') // pasar la categoria correcta como parametro
+let currentCategory 
+
+const listAllMovies = (title, category) => {
+    allMovies(title, category, page = 1)
 }
 
-const allMovies = (titlePage, category) => {
+const allMovies = (titlePage, category, page) => {
     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}&page=${page}`)
         .then(response => response.json())
         .then(res => {
+<<<<<<< HEAD
         createAllElemPage(titlePage, res.total_results)
+=======
+        createAllElemPage(titlePage)
+        currentCategory = category
+>>>>>>> ec8b168d99cf2a99e92d86acc3b894a0f5de6499
         res.results.forEach(e => {
             createList(e, 'list-container')
         })}
@@ -120,17 +131,52 @@ const allMovies = (titlePage, category) => {
         .catch(error => console.log(error))
 }
 
+const addOnePageMore = () => {
+    page = page + 1
+    let title = document.getElementById('title').innerText
+    allMovies(title, currentCategory, page) // pasar la categoria correcta como parametro
+}
+
 const initialize = () => {
     categories.forEach(e => printList(e))
-    fetchMovie('420818')
+    fetchMovie('299534')
+}
+
+const infoMovie = (content) => {
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${content}&page=${page}`)
+        .then(response => response.json())
+        .then(res => {
+            let home = document.getElementById('home')
+            home.innerHTML = ' '
+            let container = document.createElement('div')
+            container.id = 'container'
+            home.appendChild(container)
+            res.results.forEach(e => createList(e, 'container')
+            )
+        })
+}
+
+const searchMovie = () => {
+    let input = document.getElementById('search')
+    content = input.value
+    if (content !== ''){
+        input.value = ''
+        infoMovie(content)
+    }
+}
+
+var keyPress=function(event){
+    event.code === 'Enter' ? searchMovie() : false
 }
 
 /*
 *Los resultados totales
-*El boton de loadmore
-*Los estilos en la pagina de cada categoria
-*Las imagenes no aparecen
+*generos en el modal
 *Modal para cada peli
-*Buscador para peliculas
+*Busqueda en la pagina principal
+
+*boton para siguiente y anterior o que cuando apretes loadmore se carguen abajo
+*Los estilos en la pagina de cada categoria
 *responsive - sacar el nav y hacer el menu hamburguesa
+*si llegamos hacer el autocomplete en la busqueda
 */

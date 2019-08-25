@@ -13,22 +13,23 @@
 <body onload="initialize()">
     <header class="header">
             <i class="material-icons">search</i>
-            <input type="text" name="fname" placeholder="Search for a movie..."/>
+            <input type="text" value = "" onkeyup="handleSearch()" onkeypress="keyPress(event)" name="fname" placeholder="Search for a movie..." id="search"/>
     </header>
     <div class="ppal">
         <section class="info">
             <nav>
-                <a class="logo" href="#"><i class="material-icons">local_movies</i></a>
+                <a class="logo" href="index.html"><i class="material-icons">local_movies</i></a>
                 <ul class="navigation">
-                    <li><a href="#" onclick="allMovies('Popular movies', 'popular')">Popular</a></li>
-                    <li><a href="#" onclick="allMovies('Top Rated Movies', 'top_rated')">Top Rated</a></li>
-                    <li><a href="#" onclick="allMovies('Upcoming Movies', 'upcoming')">Upcoming</a></li>
-                    <li><a href="#" onclick="allMovies('Now Playing', 'now_playing')">Now Playing</a></li>
+                    <li><a href="#" onclick="listAllMovies('Popular movies', 'popular')">Popular</a></li>
+                    <li><a href="#" onclick="listAllMovies('Top Rated Movies', 'top_rated')">Top Rated</a></li>
+                    <li><a href="#" onclick="listAllMovies('Upcoming Movies', 'upcoming')">Upcoming</a></li>
+                    <li><a href="#" onclick="listAllMovies('Now Playing', 'now_playing')">Now Playing</a></li>
                 </ul>
             </nav>
         </section>
         <section class="home" id="home">
             <header class="banner-home">
+                <img src="batman.jpg" class="img-home">
                 <p>THE MOVIE DB APP</p>
             </header>
             <div class="container">
@@ -64,7 +65,7 @@
     <div class="close-modal" id="modal">
         <div class="modal">
             <div class="first-div">
-                <img class="header-img" id="header-img">
+                <img class="header-img" id="header-img" height="100%" width="100%">
                 <div class="movie-header">
                     <a href="#" onclick="closeModal()">x</a>
                     <div>
@@ -74,7 +75,7 @@
                 </div>
             </div>
             <div class="movie-info">
-                <div class="movie-image"><img id="movie-image"></div>
+                <div class="movie-image"><img id="movie-image" height="100%" width="100%"></div>
                 <div class="movie-description">
                     <p id="overview"></p>
                     <h4 class="genres">GENRES</h4>

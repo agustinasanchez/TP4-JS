@@ -97,18 +97,10 @@ body .ppal .home {
 }
 body .ppal .home .banner-home {
   height: 400px;
-  position: relative;
-  overflow: hidden;
-}
-body .ppal .home .banner-home .img-home {
-  width: 100%;
-  opacity: 0.5;
+  background-image: url(../batman.jpg);
+  background-size: cover;
 }
 body .ppal .home .banner-home p {
-  position: absolute;
-  top: 0;
-  left: 40%;
-  z-index: 1;
   line-height: 400px;
   text-align: center;
   color: #000;
@@ -240,7 +232,7 @@ body .modal-container .modal .movie-info .movie-image {
   height: 300px;
   z-index: 1;
   position: absolute;
-  top: -40%;
+  top: -60%;
   left: 45px;
   background-size: cover;
 }
@@ -259,4 +251,4 @@ body .modal-container .modal .movie-info .movie-description p {
   margin: 10px 0;
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=css.map */
