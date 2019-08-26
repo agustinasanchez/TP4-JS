@@ -78,7 +78,7 @@ const createAllElemPage = (title, page, totalPages, results) => {
     let home = document.getElementById('home')
     home.innerHTML = ' '
     let div = createElem('div', 'container') //la clase no tiene estilos
-    let ul = createElem('ul', 'movies-list')
+    let ul = createElem('ul', 'all-movies-list') //esta clase hay que hacerla
     ul.id = 'list-container'
     let h2 = createElem('h2', 'title-category')
     h2.innerText = title
@@ -87,28 +87,29 @@ const createAllElemPage = (title, page, totalPages, results) => {
     totalResults.innerText = results
     let numPage = createElem('p', 'results')
     numPage.innerText = `Página ${page} de ${totalPages}`
-    let previousButton = createElem('a', 'button-page') //la clase no tiene estilos
-    previousButton.innerText = 'Previous'
-    previousButton.id = 'previous'
-    previousButton.onclick = previousPage
-    previousButton.href = '#'
-    page === 1 ? previousButton.style.display = 'none' : true
-    let nextButton = createElem('a', 'button-page') //la clase no tiene estilos
-    nextButton.innerText = 'Next'
-    nextButton.href = '#'
-    nextButton.id = 'next'
-    nextButton.onclick = nextPage   
-    page === totalPages ? nextButton.style.display = 'none' : true
+
+    let previousBtn = createBtn('Previous', 'previous', previousPage)
+    page === 1 ? previousBtn.style.display = 'none' : true
+    let nextBtn = createBtn('Next', 'next', nextPage)
+    page === totalPages ? nextBtn.style.display = 'none' : true
+
     home.appendChild(div)
     div.appendChild(h2) 
     div.appendChild(totalResults)
     div.appendChild(numPage)
-    div.appendChild(previousButton)
-    div.appendChild(nextButton)
+    div.appendChild(previousBtn)
+    div.appendChild(nextBtn)
     div.appendChild(ul)
 }
-//falta mejorar los estilos de la pagina
 
+const createBtn = (content, id, functionBtn) => {
+    let btn = createElem('a', 'button-page')
+    btn.innerText = content
+    btn.id = id
+    btn.onclick = functionBtn
+    btn.href = '#'
+    return btn
+}
 
 let currentCategory 
 
@@ -135,9 +136,7 @@ const nextPage = () => {
     allMovies(title, currentCategory, page) 
 }
 const previousPage = () => {
-    if (page === 1){
-        console.log('oli')
-    }else {
+    if (page !== 1){
         page = page - 1
         let title = document.getElementById('title').innerText
         allMovies(title, currentCategory, page) 
@@ -178,6 +177,4 @@ var keyPress=function(event){
 /*
 *Los estilos en la pagina de cada categoria
 *responsive - sacar el nav y hacer el menu hamburguesa
-
-*si llegamos hacer el autocomplete en la busqueda (onkeyup)
 */
