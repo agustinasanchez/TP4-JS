@@ -27,6 +27,8 @@ body{
             margin-left:20px;
             line-height: 100px;
             color:#ccc;
+            width: 20px;
+            height: 20px;
         }
         input{
             width: 100%;
@@ -56,43 +58,44 @@ body{
                 z-index:1;
                 .logo{
                     background-color:#000;
-                    display:block;
+                    display:flex;
+                    align-items: center;
+                    justify-content: center;
                     width:100px;
                     height: 100px;
-                    text-align: center;
-                    line-height: 100px;
-                    text-decoration: none;
-                    color: #fff;  
-                    .material-icons{
+                    .icon-logo{
                         transition: all .3s ease-in;
                     }
                     &:hover{
-                        .material-icons{
+                        .icon-logo{
                             transform: scale(1.1);
                             transition: all .3s ease-out;
                         }
                     }                  
                 }
                 .navigation{
-                    li{
+                    a{
+                        display:flex;
+                        flex-direction:column;
+                        justify-content: center;
+                        text-decoration: none;
+                        color: rgba(8,28,36,.7);
+                        transition: all .3s ease-in;
                         background-color:#fff;
-                        display:block;
                         width:100px;
                         height: 100px;
                         text-align: center;
-                        line-height: 100px;
                         border-bottom: solid 1px #ccc;
-                        a{
-                            text-decoration: none;
-                            color: rgba(8,28,36,.7);
-                            transition: all .3s ease-in;
+                        img{
+                            display:block;
+                            margin: 0 auto;
+                            width: 20px;
+                            height: 20px;
+                            color: #ccc;
                         }
                         &:hover{
-                            a{
-                                color:#081c24;
-                                transition: all .3s ease-out;
-                            }
-                            
+                            color:#081c24;
+                            transition: all .3s ease-out;
                         }
                     }
                 }
@@ -268,6 +271,90 @@ body{
             }
         }
     }
-    
 }
 
+.container-list{
+    display:flex;
+    flex-direction:column;
+    margin: 0 auto;
+    width: 90%;
+    .title{
+        color: #081c24;
+        font-size: 20px;
+    }
+    .button{
+        display:block;
+        text-align: center;
+        width: 100px;
+        text-decoration: none;
+        padding: 5px 10px;
+        margin: 5px 5px;
+        color: #323a3d;
+        border: 1px solid #323a3d;
+        transition: all 0.5s ease-in;
+        &:hover{
+            background-color: #323a3d;
+            color:#fff;
+            transition: all 0.5s ease-out;
+        }
+    }
+}
+
+
+.menu-on{
+    display:block;
+    width: 200px;
+    height: 400px;
+    background-color: #000;
+    z-index:1;
+    .nav-list{
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1;
+        li{
+            width: 50px;
+            height: 50px;
+            list-style: none;
+            a{
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    body{
+        .ppal{
+            .info{
+                display:none;
+            }
+        }
+        .header{
+            .menu{
+                display:block;
+            }
+            .menu-on{
+                display:block;
+                width: 200px;
+                height: 100%;
+                background-color: #000;
+                .nav-list{
+                    display:flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    flex: 1;
+                    li{
+                        width: 50px;
+                        height: 50px;
+                        list-style: none;
+                        a{
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

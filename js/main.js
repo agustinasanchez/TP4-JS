@@ -1,9 +1,14 @@
 const closeModal = () => {
-    // let modal = document.getElementsByClassName('modal')
-    // modal.innerHTML = ' '
     let container = document.getElementById('modal')
     container.classList.remove('modal-container')
     container.classList.add('close-modal')
+    // let modal = document.getElementsByClassName('modal')
+    // modal.innerHTML = ' '
+}
+
+const openMenu = () => {
+    document.getElementById('menu').style.display = 'none' 
+    document.getElementById('menu-on').style.display = 'block'
 }
 
 let apiKey = `de8e683780427ec48ccb17461ebf36c3`
@@ -60,6 +65,7 @@ const fillModal = ({title, tagline, poster_path, backdrop_path, overview, releas
         let ul = document.getElementById('genres')
         let genre = document.createElement('li')
         genre.innerText = e.name
+        console.log(e)
         ul.appendChild(genre)
     })
 }
@@ -77,34 +83,35 @@ const fetchMovie = (peliculaId) => fetch(`https://api.themoviedb.org/3/movie/${p
 const createAllElemPage = (title, page, totalPages, results) => {
     let home = document.getElementById('home')
     home.innerHTML = ' '
-    let div = createElem('div', 'container') //la clase no tiene estilos
+    let div = createElem('div', 'container-list') //la clase no tiene estilos
     let ul = createElem('ul', 'all-movies-list') //esta clase hay que hacerla
     ul.id = 'list-container'
-    let h2 = createElem('h2', 'title-category')
+    let h2 = createElem('h2', 'title')
     h2.innerText = title
     h2.id = 'title'
     let totalResults = createElem('p', 'results') //la clase no tiene estilos
-    totalResults.innerText = results
+    totalResults.innerText = `${results} results`
     let numPage = createElem('p', 'results')
-    numPage.innerText = `Página ${page} de ${totalPages}`
+    numPage.innerText = `Page ${page} of ${totalPages}`
 
-    let previousBtn = createBtn('Previous', 'previous', previousPage)
+    let previousBtn = createBtn('← Previous', 'button', 'previous', previousPage)
     page === 1 ? previousBtn.style.display = 'none' : true
-    let nextBtn = createBtn('Next', 'next', nextPage)
+    let nextBtn = createBtn('Next →', 'button', 'next', nextPage)
     page === totalPages ? nextBtn.style.display = 'none' : true
 
     home.appendChild(div)
     div.appendChild(h2) 
     div.appendChild(totalResults)
-    div.appendChild(numPage)
     div.appendChild(previousBtn)
     div.appendChild(nextBtn)
+    div.appendChild(numPage)
     div.appendChild(ul)
 }
 
-const createBtn = (content, id, functionBtn) => {
+const createBtn = (content, classBtn, id, functionBtn) => {
     let btn = createElem('a', 'button-page')
     btn.innerText = content
+    btn.classList.add(classBtn)
     btn.id = id
     btn.onclick = functionBtn
     btn.href = '#'
@@ -176,5 +183,7 @@ var keyPress=function(event){
 
 /*
 *Los estilos en la pagina de cada categoria
-*responsive - sacar el nav y hacer el menu hamburguesa
+*responsive, que no rompa en ningun momento que cambie de tamaño 
+*sacar el nav y hacer el menu hamburguesa
+*en el nav, el a envuelva el li
 */

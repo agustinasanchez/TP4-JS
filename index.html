@@ -12,18 +12,27 @@
 </head>
 <body onload="initialize()">
     <header class="header">
+            <!-- <a href="#" onclick="openMenu()" id="menu" class="menu"><i class="material-icons">menu</i></a> -->
+            <!-- <div class="menu-on" id="menu-on">
+                <ul class="nav-list">
+                    <li><a href="#" onclick="listAllMovies('Popular movies', 'popular')">Popular</a></li>
+                    <li><a href="#" onclick="listAllMovies('Top Rated Movies', 'top_rated')">Top Rated</a></li>
+                    <li><a href="#" onclick="listAllMovies('Upcoming Movies', 'upcoming')">Upcoming</a></li>
+                    <li><a href="#" onclick="listAllMovies('Now Playing', 'now_playing')">Now Playing</a></li>
+                </ul>
+            </div> -->
             <i class="material-icons">search</i>
             <input type="text" value = "" onkeypress="keyPress(event)" name="fname" placeholder="Search for a movie..." id="search"/>
     </header>
     <div class="ppal">
         <section class="info">
             <nav>
-                <a class="logo" href="index.html"><i class="material-icons">local_movies</i></a>
+                <a class="logo" href="index.html"><img class="icon-logo" src="images/logo.svg"/></a>
                 <ul class="navigation">
-                    <li><a href="#" onclick="listAllMovies('Popular movies', 'popular')">Popular</a></li>
-                    <li><a href="#" onclick="listAllMovies('Top Rated Movies', 'top_rated')">Top Rated</a></li>
-                    <li><a href="#" onclick="listAllMovies('Upcoming Movies', 'upcoming')">Upcoming</a></li>
-                    <li><a href="#" onclick="listAllMovies('Now Playing', 'now_playing')">Now Playing</a></li>
+                    <li><a href="#" onclick="listAllMovies('Popular movies', 'popular')"><img src="images/favorites.svg"/>Popular</a></li>
+                    <li><a href="#" onclick="listAllMovies('Top Rated Movies', 'top_rated')"><img src="images/up-arrow.svg"/>Top Rated</a></li>
+                    <li><a href="#" onclick="listAllMovies('Upcoming Movies', 'upcoming')"><img src="images/calendar.svg"/>Upcoming</a></li>
+                    <li><a href="#" onclick="listAllMovies('Now Playing', 'now_playing')"><img src="images/play-button.svg"/>Now Playing</a></li>
                 </ul>
             </nav>
         </section>
@@ -35,28 +44,28 @@
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Popular Movies</h2>
-                    <a href="#" class="view-all" onclick="allMovies('Popular movies', 'popular')">View All</a>
+                    <a href="#" class="view-all" onclick="allMovies('Popular movies', 'popular')">View All →</a>
                 </header>
                 <ul class="movies-list" id="popular"></ul>
             </div>
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Top Rates Movies</h2>
-                    <a href="#" class="view-all" onclick="allMovies('Top Rated Movies', 'top_rated')">View All</a>
+                    <a href="#" class="view-all" onclick="allMovies('Top Rated Movies', 'top_rated')">View All →</a>
                 </header>
                 <ul class="movies-list" id="top_rated"></ul>
             </div>
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Upcoming Movies</h2>
-                    <a href="#" class="view-all" onclick="allMovies('Upcoming Movies', 'upcoming')">View All</a>
+                    <a href="#" class="view-all" onclick="allMovies('Upcoming Movies', 'upcoming')">View All →</a>
                 </header>
                 <ul class="movies-list" id="upcoming"></ul>
             </div>
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Now Playing Movies</h2>
-                    <a href="#" class="view-all" onclick="allMovies('Now Playing', 'now_playing')">View All</a>
+                    <a href="#" class="view-all" onclick="allMovies('Now Playing', 'now_playing')">View All →</a>
                 </header>
                 <ul class="movies-list" id="now_playing"></ul>
             </div>

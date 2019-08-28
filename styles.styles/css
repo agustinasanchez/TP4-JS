@@ -25,12 +25,10 @@ body .header {
   left: 0;
   z-index: 1;
 }
-body .header .material-icons {
+body .header .material-icons, body .header .menu {
   margin-left: 20px;
   line-height: 100px;
   color: #ccc;
-  width: 20px;
-  height: 20px;
 }
 body .header input {
   width: 100%;
@@ -60,40 +58,36 @@ body .ppal .info nav {
 }
 body .ppal .info nav .logo {
   background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-}
-body .ppal .info nav .logo .icon-logo {
-  transition: all 0.3s ease-in;
-}
-body .ppal .info nav .logo:hover .icon-logo {
-  transform: scale(1.1);
-  transition: all 0.3s ease-out;
-}
-body .ppal .info nav .navigation a {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-decoration: none;
-  color: rgba(8, 28, 36, 0.7);
-  transition: all 0.3s ease-in;
-  background-color: #fff;
+  display: block;
   width: 100px;
   height: 100px;
   text-align: center;
+  line-height: 100px;
+  text-decoration: none;
+  color: #fff;
+}
+body .ppal .info nav .logo .material-icons {
+  transition: all 0.3s ease-in;
+}
+body .ppal .info nav .logo:hover .material-icons {
+  transform: scale(1.1);
+  transition: all 0.3s ease-out;
+}
+body .ppal .info nav .navigation li {
+  background-color: #fff;
+  display: block;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
   border-bottom: solid 1px #ccc;
 }
-body .ppal .info nav .navigation a img {
-  display: block;
-  margin: 0 auto;
-  width: 20px;
-  height: 20px;
-  color: #ccc;
+body .ppal .info nav .navigation li a {
+  text-decoration: none;
+  color: rgba(8, 28, 36, 0.7);
+  transition: all 0.3s ease-in;
 }
-body .ppal .info nav .navigation a:hover {
+body .ppal .info nav .navigation li:hover a {
   color: #081c24;
   transition: all 0.3s ease-out;
 }
@@ -265,32 +259,6 @@ body .modal-container .modal .movie-info .movie-description p {
   margin: 10px 0;
 }
 
-.container-list {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 90%;
-}
-.container-list .title {
-  color: #081c24;
-  font-size: 20px;
-}
-.container-list .button {
-  display: block;
-  text-align: center;
-  width: 100px;
-  text-decoration: none;
-  padding: 5px 10px;
-  margin: 5px 5px;
-  color: #323a3d;
-  border: 1px solid #323a3d;
-  transition: all 0.5s ease-in;
-}
-.container-list .button:hover {
-  background-color: #323a3d;
-  color: #fff;
-  transition: all 0.5s ease-out;
-}
 .menu-on {
   display: block;
   width: 200px;
@@ -342,4 +310,4 @@ body .modal-container .modal .movie-info .movie-description p {
   }
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=css.map */
