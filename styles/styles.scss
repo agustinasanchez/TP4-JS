@@ -191,13 +191,14 @@ body{
     }
     .modal-container{
         display:block;
-        position: absolute;
+        position: fixed;
         top:0;
         left:0;
         width: 100%;
         height: 100%;
+        overflow:auto;
         z-index:1;
-        background-color: rgba(8,28,36,.2);
+        background-color: rgba(8,28,36,.98);
         .modal{
             display:block;
             width: 100vh;
@@ -209,6 +210,7 @@ body{
             .first-div{
                 width: 100%;
                 height: 40%;
+                background-color: #081c24;
                 .header-img{
                     width: 100%;
                     opacity: 0.2;
@@ -225,13 +227,19 @@ body{
                         display:block;
                         width: 100%;
                         text-align: right;
+                        text-decoration: none;
+                        color: #fff;
+                        font-size: 30px;
+                        &:hover{
+                            color: #773333;
+                        }
                     }
                     div{
                         width: 50%;
                         float: right;
                         margin: 90px 0;
                         .movie-title{
-                            color: rgb(119, 51, 51);
+                            color: #bc3b69;
                             margin: 5px 0;
                             font-size: 20px;
                         }
@@ -267,6 +275,16 @@ body{
                     p{
                         margin: 10px 0;
                     }
+                    #genres{
+                        display:flex;
+                        flex-direction: row;
+                        list-style: none;
+                        text-decoration:none;
+                        width: 100%;
+                        .genre{
+                            margin: 0 2px;
+                        }
+                    }
                 }
             }
         }
@@ -278,24 +296,76 @@ body{
     flex-direction:column;
     margin: 0 auto;
     width: 90%;
-    .title{
-        color: #081c24;
-        font-size: 20px;
+    .container-title{
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+        .title{
+            color: #081c24;
+            font-size: 20px;
+        }
     }
-    .button{
-        display:block;
-        text-align: center;
-        width: 100px;
+    .container-btn{
+        margin:0 auto;
+        width: 250px;
+        flex-direction: row;
+        display: flex;
+        justify-content: center;
+        .button{
+            display:block;
+            text-align: center;
+            width: 100px;
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 5px 5px;
+            color: #323a3d;
+            border: 1px solid #323a3d;
+            transition: all 0.5s ease-in;
+            &:hover{
+                background-color: #323a3d;
+                color:#fff;
+                transition: all 0.5s ease-out;
+            }
+        }
+    }
+    .p-results{
+        margin:0 auto;
+    }
+    .all-movies-list{
+        display:grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
         text-decoration: none;
-        padding: 5px 10px;
-        margin: 5px 5px;
-        color: #323a3d;
-        border: 1px solid #323a3d;
-        transition: all 0.5s ease-in;
-        &:hover{
-            background-color: #323a3d;
-            color:#fff;
-            transition: all 0.5s ease-out;
+        list-style: none;
+        margin: 20px 0;
+        .movie{
+            margin: 10px 15px;
+            .link{
+                text-decoration: none;
+                .movie-img{
+                    width: 90%;
+                    transition: all .3s ease-in;
+                    .img{
+                        width:100%;
+                        height: 100%;
+                    }
+                }
+                .movie-title{
+                    margin: 15px 0;
+                    color:rgba(8,28,36,.5);
+                    transition: all .3s ease-in;
+                }
+            }
+            &:hover{
+                .movie-img{
+                    transform: scale(1.05);
+                    transition: all .3s ease-out;
+                }
+                .movie-title{
+                    color:#081c24;
+                    transition: all .3s ease-out;
+                }
+            }
         }
     }
 }

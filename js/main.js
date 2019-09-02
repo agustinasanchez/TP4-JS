@@ -2,8 +2,6 @@ const closeModal = () => {
     let container = document.getElementById('modal')
     container.classList.remove('modal-container')
     container.classList.add('close-modal')
-    // let modal = document.getElementsByClassName('modal')
-    // modal.innerHTML = ' '
 }
 
 const openMenu = () => {
@@ -61,17 +59,19 @@ const fillModal = ({title, tagline, poster_path, backdrop_path, overview, releas
     fillElem('release-date', release_date)
     document.getElementById('header-img').src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${backdrop_path}`
     document.getElementById('movie-image').src = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${poster_path}`
+    let ul = document.getElementById('genres')
+    ul.innerHTML = ''
     genres.forEach( e => {
-        let ul = document.getElementById('genres')
         let genre = document.createElement('li')
-        genre.innerText = e.name
-        console.log(e)
+        genre.innerText = ` ${e.name}`
+        genre.classList.add('genre')
         ul.appendChild(genre)
     })
 }
 
 const fillElem = (idElem, content) => {
     let elem = document.getElementById(idElem)
+    elem.innerHTML = ''
     elem.innerText = content
 }
 
@@ -83,16 +83,24 @@ const fetchMovie = (peliculaId) => fetch(`https://api.themoviedb.org/3/movie/${p
 const createAllElemPage = (title, page, totalPages, results) => {
     let home = document.getElementById('home')
     home.innerHTML = ' '
-    let div = createElem('div', 'container-list') //la clase no tiene estilos
-    let ul = createElem('ul', 'all-movies-list') //esta clase hay que hacerla
+    let div = createElem('div', 'container-list') 
+    let ul = createElem('ul', 'all-movies-list') 
     ul.id = 'list-container'
+
+    let contTitle = document.createElement('div')
+    contTitle.classList.add('container-title')
+
     let h2 = createElem('h2', 'title')
     h2.innerText = title
     h2.id = 'title'
-    let totalResults = createElem('p', 'results') //la clase no tiene estilos
+    let totalResults = createElem('p', 'results') 
     totalResults.innerText = `${results} results`
-    let numPage = createElem('p', 'results')
+
+    let numPage = createElem('p', 'p-results')
     numPage.innerText = `Page ${page} of ${totalPages}`
+
+    let contBtn = document.createElement('div')
+    contBtn.classList.add('container-btn')
 
     let previousBtn = createBtn('← Previous', 'button', 'previous', previousPage)
     page === 1 ? previousBtn.style.display = 'none' : true
@@ -100,10 +108,12 @@ const createAllElemPage = (title, page, totalPages, results) => {
     page === totalPages ? nextBtn.style.display = 'none' : true
 
     home.appendChild(div)
-    div.appendChild(h2) 
-    div.appendChild(totalResults)
-    div.appendChild(previousBtn)
-    div.appendChild(nextBtn)
+    div.appendChild(contTitle)
+    contTitle.appendChild(h2) 
+    contTitle.appendChild(totalResults)
+    div.appendChild(contBtn)
+    contBtn.appendChild(previousBtn)
+    contBtn.appendChild(nextBtn)
     div.appendChild(numPage)
     div.appendChild(ul)
 }
@@ -117,7 +127,7 @@ const createBtn = (content, classBtn, id, functionBtn) => {
     btn.href = '#'
     return btn
 }
-
+let page = 1
 let currentCategory 
 
 const listAllMovies = (title, category) => {
@@ -137,53 +147,45 @@ const allMovies = (titlePage, category, page) => {
         .catch(error => console.log(error))
 }
 
-const nextPage = () => {
-    page = page + 1
-    let title = document.getElementById('title').innerText
-    allMovies(title, currentCategory, page) 
-}
-const previousPage = () => {
-    if (page !== 1){
-        page = page - 1
-        let title = document.getElementById('title').innerText
-        allMovies(title, currentCategory, page) 
-    }
-}
-
-const initialize = () => {
-    categories.forEach(e => printList(e))
-}
-
-const infoMovie = (content, page = 1) => {
+const infoMovie = (content, page) => {
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${content}&page=${page}`)
         .then(response => response.json())
         .then(res => {
-            let home = document.getElementById('home')
-            home.innerHTML = ' '
-            let container = document.createElement('div')
-            container.id = 'container'
-            home.appendChild(container)
-            res.results.forEach(e => createList(e, 'container')
-            )
+            createAllElemPage('Search Results', res.page, res.total_pages, res.total_results)
+            res.results.forEach(e => {
+                createList(e, 'list-container')
+            })
         })
+        .catch(error => console.log(error))
 }
+
+let currentContent 
 
 const searchMovie = () => {
     let input = document.getElementById('search')
-    content = input.value
-    if (content !== ''){
+    currentContent = input.value
+    page = 1
+    if (currentContent !== ''){
         input.value = ''
-        infoMovie(content)
+        infoMovie(currentContent)
     }
+}
+
+const nextPage = () => {
+    page = page + 1
+    let title = document.getElementById('title').innerText
+    title === 'Search Results' ? infoMovie(currentContent, page) : allMovies(title, currentCategory, page) 
+}
+const previousPage = () => {
+    page = page - 1
+    let title = document.getElementById('title').innerText
+    title === 'Search Results' ? infoMovie(currentContent, page) : allMovies(title, currentCategory, page) 
 }
 
 var keyPress=function(event){
     event.code === 'Enter' ? searchMovie() : false
 }
 
-/*
-*Los estilos en la pagina de cada categoria
-*responsive, que no rompa en ningun momento que cambie de tamaño 
-*sacar el nav y hacer el menu hamburguesa
-*en el nav, el a envuelva el li
-*/
+const initialize = () => {
+    categories.forEach(e => printList(e))
+}
