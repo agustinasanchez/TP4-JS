@@ -116,7 +116,6 @@ body{
                     position:absolute;
                     top:0;
                     left:40%;
-                    z-index: 1;
                     line-height: 400px;
                     text-align: center;
                     color:#000;
@@ -394,37 +393,24 @@ body{
 }
 
 
-@media only screen and (max-width: 600px){
-    body{
-        .ppal{
-            .info{
-                display:none;
-            }
-        }
-        .header{
-            .menu{
-                display:block;
-            }
-            .menu-on{
-                display:block;
-                width: 200px;
-                height: 100%;
-                background-color: #000;
-                .nav-list{
-                    display:flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    flex: 1;
-                    li{
-                        width: 50px;
-                        height: 50px;
-                        list-style: none;
-                        a{
-                            text-decoration: none;
-                        }
-                    }
-                }
+@media only screen and (max-width: 1000px){
+    .home{
+        .container{
+            .movies-list{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
             }
         }
     }
+    .container-list{
+        .all-movies-list{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            }
+    }
 }
+
+//1000
+//760
