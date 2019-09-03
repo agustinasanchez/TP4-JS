@@ -23,6 +23,9 @@ body{
         top:0;
         left: 0;
         z-index:1;
+        .menu-on{
+            display:none;
+        }
         .material-icons{
             margin-left:20px;
             line-height: 100px;
@@ -293,7 +296,7 @@ body{
 .container-list{
     display:flex;
     flex-direction:column;
-    margin: 0 auto;
+    margin: 10px auto;
     width: 90%;
     .container-title{
         flex-direction: row;
@@ -369,30 +372,6 @@ body{
     }
 }
 
-
-.menu-on{
-    display:block;
-    width: 200px;
-    height: 400px;
-    background-color: #000;
-    z-index:1;
-    .nav-list{
-        display:flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex: 1;
-        li{
-            width: 50px;
-            height: 50px;
-            list-style: none;
-            a{
-                text-decoration: none;
-            }
-        }
-    }
-}
-
-
 @media only screen and (max-width: 1000px){
     .home{
         .container{
@@ -400,6 +379,9 @@ body{
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(2, 1fr);
+                .movie{
+                    width: 90%;
+                }
             }
         }
     }
@@ -412,5 +394,92 @@ body{
     }
 }
 
-//1000
-//760
+@media only screen and (max-width: 760px){
+    body{
+        .header{
+            height: 80px;
+            position: relative;
+            position:fixed;
+            input{
+                margin: 30px 0px 30px 10px;
+                width: 70%;
+            }
+            .menu{
+                display:block;
+                border-left: 1px solid #f8f8f8;
+            }
+            .menu-on{
+                display:none;
+                position:absolute;
+                top:80px;
+                left:0;
+                z-index: 1;
+                background-color: rgba(255, 255, 255, 0.9);
+                height: calc(100vh - 80px);
+                width: 100%;
+                .nav-list{
+                    display:grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: repeat(2, 1fr);
+                    li{
+                        width: 50vh;
+                        height: 80px;
+                        text-align: center;
+                        padding-top: 30px;
+                        list-style: none;
+                        a{
+                            display:block;
+                            width: 50vh;
+                            height: 80px;
+                            text-decoration: none;
+                            transition: all .3s ease-in;
+                            justify-content: center;
+                            color: rgba(8,28,36,.7);
+                            img{
+                                display:block;
+                                margin: 0 auto;
+                                width: 20px;
+                                height: 20px;
+                                color: #ccc;
+                            }
+                            &:hover{
+                                color:#081c24;
+                                transition: all .3s ease-out;
+                            }
+                        }
+                    }
+                }
+            }
+            .material-icons{
+                line-height: 80px;
+            }
+        }
+        .ppal{
+            .home{
+                width: 100%;
+                padding: 80px 0 0 0;
+                .container{
+                    .movies-list{
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        grid-template-rows: repeat(2, 1fr);
+                        .movie{
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+            .info{
+                nav{
+                    .logo{
+                        height: 80px;
+                    }
+                    .navigation{
+                        display:none;
+                    }
+                }
+            }
+            
+        }
+    }
+}

@@ -25,6 +25,9 @@ body .header {
   left: 0;
   z-index: 1;
 }
+body .header .menu-on {
+  display: none;
+}
 body .header .material-icons {
   margin-left: 20px;
   line-height: 100px;
@@ -114,7 +117,6 @@ body .ppal .home .banner-home p {
   position: absolute;
   top: 0;
   left: 40%;
-  z-index: 1;
   line-height: 400px;
   text-align: center;
   color: #000;
@@ -286,7 +288,7 @@ body .modal-container .modal .movie-info .movie-description #genres .genre {
 .container-list {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 10px auto;
   width: 90%;
 }
 .container-list .container-title {
@@ -360,54 +362,98 @@ body .modal-container .modal .movie-info .movie-description #genres .genre {
   transition: all 0.3s ease-out;
 }
 
-.menu-on {
-  display: block;
-  width: 200px;
-  height: 400px;
-  background-color: #000;
-  z-index: 1;
-}
-.menu-on .nav-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex: 1;
-}
-.menu-on .nav-list li {
-  width: 50px;
-  height: 50px;
-  list-style: none;
-}
-.menu-on .nav-list li a {
-  text-decoration: none;
-}
+@media only screen and (max-width: 1000px) {
+  .home .container .movies-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .home .container .movies-list .movie {
+    width: 90%;
+  }
 
-@media only screen and (max-width: 600px) {
-  body .ppal .info {
-    display: none;
+  .container-list .all-movies-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+}
+@media only screen and (max-width: 760px) {
+  body .header {
+    height: 80px;
+    position: relative;
+    position: fixed;
+  }
+  body .header input {
+    margin: 30px 0px 30px 10px;
+    width: 70%;
   }
   body .header .menu {
     display: block;
+    border-left: 1px solid #f8f8f8;
   }
   body .header .menu-on {
-    display: block;
-    width: 200px;
-    height: 100%;
-    background-color: #000;
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    height: calc(100vh - 80px);
+    width: 100%;
   }
   body .header .menu-on .nav-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
   }
   body .header .menu-on .nav-list li {
-    width: 50px;
-    height: 50px;
+    width: 50vh;
+    height: 80px;
+    text-align: center;
+    padding-top: 30px;
     list-style: none;
   }
   body .header .menu-on .nav-list li a {
+    display: block;
+    width: 50vh;
+    height: 80px;
     text-decoration: none;
+    transition: all 0.3s ease-in;
+    justify-content: center;
+    color: rgba(8, 28, 36, 0.7);
+  }
+  body .header .menu-on .nav-list li a img {
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    color: #ccc;
+  }
+  body .header .menu-on .nav-list li a:hover {
+    color: #081c24;
+    transition: all 0.3s ease-out;
+  }
+  body .header .material-icons {
+    line-height: 80px;
+  }
+  body .ppal .home {
+    width: 100%;
+    padding: 80px 0 0 0;
+  }
+  body .ppal .home .container .movies-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  body .ppal .home .container .movies-list .movie {
+    width: 90%;
+  }
+  body .ppal .info nav .logo {
+    height: 80px;
+  }
+  body .ppal .info nav .navigation {
+    display: none;
   }
 }
 
