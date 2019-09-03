@@ -25,13 +25,23 @@ body{
         z-index:1;
         .menu-on{
             display:none;
+            .nav-list{
+                display: none;
+                li{
+                    a{
+                        display: none;
+                        img{
+                            display: none;
+                        }
+                    }
+                }
+            }
         }
         .material-icons{
-            margin-left:20px;
+            margin-left:30px;
             line-height: 100px;
             color:#ccc;
             width: 20px;
-            height: 20px;
         }
         input{
             width: 100%;
@@ -203,7 +213,8 @@ body{
         background-color: rgba(8,28,36,.98);
         .modal{
             display:block;
-            width: 100vh;
+            width: 100%;
+            max-width: 768px;
             height: 100vh;
             background-color: #ccc;
             margin: 30px auto;
@@ -261,7 +272,7 @@ body{
                     z-index:1;
                     position:absolute;
                     top:-40%;
-                    left:45px;
+                    left:40px;
                     background-size: cover;
                 }
                 .movie-description{
@@ -392,6 +403,23 @@ body{
             grid-template-rows: repeat(10, 1fr);
             }
     }
+    .modal-container{
+        .modal{
+            width: 100%;
+            .movie-header{
+                div{
+                    margin: 50px 0;
+                }
+            }
+            .movie-info{
+                .movie-image{
+                    position: absolute;
+                    top:-40%;
+                    left: 20px;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 760px){
@@ -400,13 +428,20 @@ body{
             height: 80px;
             position: relative;
             position:fixed;
+            min-width: 550px;
             input{
                 margin: 30px 0px 30px 10px;
-                width: 70%;
+                width: calc(70% - 50px);
+                min-width: 550px;
             }
             .menu{
                 display:block;
                 border-left: 1px solid #f8f8f8;
+                width: 80px;
+                position: fixed;
+                right: 0;
+                top: 0;
+                height: 80px;
             }
             .menu-on{
                 display:none;
@@ -452,6 +487,37 @@ body{
             }
             .material-icons{
                 line-height: 80px;
+            }
+        }
+        .modal-container{
+            .modal{
+                .first-div{
+                    .movie-header{
+                        a{
+                            width: 50px;
+                            text-align: center;
+                            float: right;
+                        }
+                        div{
+                            width: 100%;
+                            float: none;
+                            .movie-title{
+                                text-align: center;
+            
+                            }
+                        }
+                    }
+                }
+                
+                .movie-info{
+                    width: 100%;
+                    .movie-description{
+                        width: 90%;
+                    }
+                    .movie-image{
+                        display:none;
+                    }
+                }
             }
         }
         .ppal{

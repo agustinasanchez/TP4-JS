@@ -7,11 +7,15 @@ const closeModal = () => {
 const openMenu = () => {
     document.getElementById('menu').onclick = closeMenu
     document.getElementById('menu-on').style.display = 'block'
+    document.getElementById('nav-list').style.display = 'grid'
+    document.getElementsByClassName('icon-nav').style.display = 'block'
 }
 
 const closeMenu = () => {
     document.getElementById('menu-on').style.display = 'none'
     document.getElementById('menu').onclick = openMenu
+    document.getElementById('nav-list').style.display = 'none'
+    document.getElementsByClassName('icon-nav').style.display = 'none'
 }
 
 let apiKey = `de8e683780427ec48ccb17461ebf36c3`
