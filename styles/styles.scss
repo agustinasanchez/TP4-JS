@@ -25,6 +25,9 @@ body{
         z-index:1;
         .menu-on{
             display:none;
+            /*
+            La propiedad display: none también afecta al contenido del elemento al que se la aplica, por lo tanto, no es necesario agregarla en cada elemento hijo.
+
             .nav-list{
                 display: none;
                 li{
@@ -36,6 +39,8 @@ body{
                     }
                 }
             }
+
+            */
         }
         .material-icons{
             margin-left:30px;
@@ -140,7 +145,7 @@ body{
                 flex-direction: column;
                 width:90%;
                 margin: 10px auto;
-                .title-section{
+                .title-section{ 
                     display:block;
                     margin: 15px 15px;
                     .title-category{
@@ -549,3 +554,5 @@ body{
         }
     }
 }
+
+// Se podría aprovechar más sass usando componentes, variables y mixins

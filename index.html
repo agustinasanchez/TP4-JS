@@ -12,35 +12,57 @@
 </head>
 <body onload="initialize()">
     <header class="header">
-            <div class="menu-on" id="menu-on">
-                <ul id="nav-list" class="nav-list">
-                    <li onclick="closeMenu()"><a href="#" onclick="listAllMovies('Popular movies', 'popular')"><img class="icon-nav" src="images/favorites.svg"/>Popular</a></li>
-                    <li onclick="closeMenu()"><a href="#" onclick="listAllMovies('Top Rated Movies', 'top_rated')"><img class="icon-nav" src="images/up-arrow.svg"/>Top Rated</a></li>
-                    <li onclick="closeMenu()"><a href="#" onclick="listAllMovies('Upcoming Movies', 'upcoming')"><img class="icon-nav" src="images/calendar.svg"/>Upcoming</a></li>
-                    <li onclick="closeMenu()"><a href="#" onclick="listAllMovies('Now Playing', 'now_playing')"><img class="icon-nav" src="images/play-button.svg"/>Now Playing</a></li>
-                </ul>
-            </div>
-            <i class="material-icons">search</i>
-            <input type="text" value = "" onkeypress="keyPress(event)" name="fname" placeholder="Search for a movie..." id="search"/>
-            <a href="#" onclick="openMenu()" id="menu" class="menu"><i class="material-icons">menu</i></a>
+        <div class="menu-on" id="menu-on">
+            <ul id="nav-list" class="nav-list">
+                <li onclick="closeMenu()">
+                    <a href="#" onclick="listAllMovies('Popular movies', 'popular')">
+                    <img class="icon-nav" src="images/favorites.svg" />Popular</a>
+                </li>
+                <li onclick="closeMenu()">
+                    <a href="#" onclick="listAllMovies('Top Rated Movies', 'top_rated')"><img class="icon-nav" src="images/up-arrow.svg" />Top Rated</a>
+                </li>
+                <li onclick="closeMenu()">
+                    <a href="#" onclick="listAllMovies('Upcoming Movies', 'upcoming')"><img class="icon-nav" src="images/calendar.svg" />Upcoming</a>
+                </li>
+                <li onclick="closeMenu()">
+                    <a href="#" onclick="listAllMovies('Now Playing', 'now_playing')"><img class="icon-nav" src="images/play-button.svg" />Now Playing</a>
+                </li>
+            </ul>
+        </div>
+        <i class="material-icons">search</i>
+        <input type="text" value = "" onkeypress="keyPress(event)" name="fname" placeholder="Search for a movie..." id="search"/>
+        <a href="#" onclick="openMenu()" id="menu" class="menu"><i class="material-icons">menu</i></a>
     </header>
+
     <div class="ppal">
         <section class="info">
             <nav>
-                <a class="logo" href="index.html"><img class="icon-logo" src="images/logo.svg"/></a>
+                <a class="logo" href="index.html">
+                    <img class="icon-logo" src="images/logo.svg"/>
+                </a>
                 <ul class="navigation">
-                    <li><a href="#" onclick="listAllMovies('Popular movies', 'popular')"><img src="images/favorites.svg"/>Popular</a></li>
-                    <li><a href="#" onclick="listAllMovies('Top Rated Movies', 'top_rated')"><img src="images/up-arrow.svg"/>Top Rated</a></li>
-                    <li><a href="#" onclick="listAllMovies('Upcoming Movies', 'upcoming')"><img src="images/calendar.svg"/>Upcoming</a></li>
-                    <li><a href="#" onclick="listAllMovies('Now Playing', 'now_playing')"><img src="images/play-button.svg"/>Now Playing</a></li>
+                    <li>
+                        <a href="#" onclick="listAllMovies('Popular movies', 'popular')"><img src="images/favorites.svg"/>Popular</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="listAllMovies('Top Rated Movies', 'top_rated')"><img src="images/up-arrow.svg"/>Top Rated</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="listAllMovies('Upcoming Movies', 'upcoming')"><img src="images/calendar.svg"/>Upcoming</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="listAllMovies('Now Playing', 'now_playing')"><img src="images/play-button.svg"/>Now Playing</a>
+                    </li>
                 </ul>
             </nav>
         </section>
+
         <section class="home" id="home">
             <header class="banner-home">
                 <img src="images/batman.jpg" class="img-home">
                 <p>THE MOVIE DB APP</p>
             </header>
+
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Popular Movies</h2>
@@ -48,6 +70,7 @@
                 </header>
                 <ul class="movies-list" id="popular"></ul>
             </div>
+
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Top Rates Movies</h2>
@@ -55,6 +78,7 @@
                 </header>
                 <ul class="movies-list" id="top_rated"></ul>
             </div>
+
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Upcoming Movies</h2>
@@ -62,6 +86,7 @@
                 </header>
                 <ul class="movies-list" id="upcoming"></ul>
             </div>
+
             <div class="container">
                 <header class="title-section">
                     <h2 class="title-category">Now Playing Movies</h2>
@@ -71,6 +96,7 @@
             </div>
         </section>
     </div>
+
     <div class="close-modal" id="modal">
         <div class="modal">
             <div class="first-div">
@@ -83,6 +109,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="movie-info">
                 <div class="movie-image"><img id="movie-image" height="100%" width="100%"></div>
                 <div class="movie-description">

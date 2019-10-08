@@ -21,7 +21,7 @@ const closeMenu = () => {
 let apiKey = `de8e683780427ec48ccb17461ebf36c3`
 let categories = ['popular', 'top_rated', 'upcoming', 'now_playing']
 
-const createElem = (elem, className) => {
+const createElem = (elem, className) => { //🙌
   let name = document.createElement(elem)
   name.classList.add(className)
   return name
